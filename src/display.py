@@ -72,11 +72,7 @@ class Display:
     self.current_digit_offset += 9
 
   def set_digit(self, digit: str, offset: int) -> None:
-      # todo make overwritting cleaner
-      for row in self.pixel_map:
-        for pixel_idx in range(offset, 7):
-          row[pixel_idx] = " "
-
+      self.delete_digit(offset)
       for segment_id in digit_dict[digit]:
         self.add_segment(segments[segment_id], offset)
 
