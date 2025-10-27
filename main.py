@@ -34,14 +34,15 @@ def display_clock(show_seconds_line: bool = False):
     sys.stdout.write("\033[H")  # ANSI escape code to move the cursor to the top left
     print(display, end="")
 
+
 if __name__ == "__main__":
-    l = True
+    show_seconds_line = True
     try:
         # This clears the screen initially and hides the cursor
         sys.stdout.write("\033[2J\033[?25l")
         while True:
-            display_clock(show_seconds_line=l)
-            l = not l
+            display_clock(show_seconds_line=show_seconds_line)
+            show_seconds_line = not show_seconds_line
             time.sleep(1)
     except KeyboardInterrupt:
         # Reset cursor visibility on exit
